@@ -12,6 +12,7 @@
     $app['debug'] = true;
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
+    $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
 
@@ -39,6 +40,20 @@
     $app->delete("/stores", function() use ($app) {
         Store::deleteAll();
         return $app->redirect('/');
+    });
+
+    $app->get("/store/{id}", function($id) use($app) {
+        $store = Store::find($id);
+        $brands = $store->getBrands();
+        $all_brands = Brand::getAll();
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brands, 'all_brands' => $all_brands));
+    })
+    ->bind('store');
+
+    $app->post("/store/{id}/add_brand", function($id) use($app) {
+        $store = Store::find($id);
+        $store->addBrand($_POST['brand_id']);
+        return $app->redirect($app['url_generator']->generate('store', array('id' => $id)));
     });
 
     return $app;

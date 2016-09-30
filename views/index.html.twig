@@ -12,7 +12,7 @@
         <div class='col-sm-6'>
           <h2>Stores</h2>
           {% for store in stores %}
-            <p>{{ store.getStoreName }}</p>
+            <p><a href='/store/{{ store.getId }}'>{{ store.getStoreName }}</a></p>
           {% endfor %}
           {% if stores %}
             <form action='/stores' method='post'>
