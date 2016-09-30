@@ -46,7 +46,7 @@
             $test_store->update("Paymore");
             $result = Store::getAll()[0];
 
-            $this->assertEquals("Paymore", $result->getName());
+            $this->assertEquals("Paymore", $result->getStoreName());
         }
 
     }
