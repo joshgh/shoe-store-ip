@@ -50,12 +50,6 @@
     })
     ->bind('store');
 
-    $app->post("/store/{id}/add_brand", function($id) use($app) {
-        $store = Store::find($id);
-        $store->addBrand($_POST['brand_id']);
-        return $app->redirect($app['url_generator']->generate('store', array('id' => $id)));
-    });
-
     $app->patch("/store/{id}", function($id) use($app) {
         $store = Store::find($id);
         $store->update($_POST['store_name']);
@@ -66,6 +60,12 @@
         $store = Store::find($id);
         $store->delete();
         return $app->redirect('/');
+    });
+
+    $app->post("/store/{id}/add_brand", function($id) use($app) {
+        $store = Store::find($id);
+        $store->addBrand($_POST['brand_id']);
+        return $app->redirect($app['url_generator']->generate('store', array('id' => $id)));
     });
 
     $app->get("/brand/{id}", function($id) use($app) {
@@ -81,7 +81,6 @@
         $brand->addStore($_POST['store_id']);
         return $app->redirect($app['url_generator']->generate('brand', array('id' => $id)));
     });
-
 
     return $app;
 ?>
