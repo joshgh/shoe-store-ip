@@ -26,7 +26,12 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        function getAll()
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->id};");
+        }
+
+        static function getAll()
         {
             $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores");
             $store_array = array();
@@ -38,6 +43,12 @@
             }
             return $store_array;
         }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores;");
+        }
+
     }
 
 ?>

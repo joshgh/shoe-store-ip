@@ -10,6 +10,10 @@
     $DB = new PDO($server, $username, $password);
     class StoreTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Store::deleteAll();
+        }
 
         function testGetStoreName()
         {
