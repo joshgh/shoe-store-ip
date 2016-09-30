@@ -13,7 +13,7 @@
         <div class='col-sm-6'>
           <h3>Brands Carried</h3>
           {% for brand in brands %}
-            <p>{{ brand.getBrandName }}</p>
+            <p><a href='/brand/{{ brand.getId }}'>{{ brand.getBrandName }}</a></p>
           {% endfor %}
           <form action='/store/{{ store.getId }}/add_brand' method='post'>
             <h3>Add a Brand</h3>

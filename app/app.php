@@ -68,5 +68,20 @@
         return $app->redirect('/');
     });
 
+    $app->get("/brand/{id}", function($id) use($app) {
+        $brand = Brand::find($id);
+        $stores = $brand->getStores();
+        $all_stores = Store::getAll();
+        return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores, 'all_stores' => $all_stores));
+    })
+    ->bind('brand');
+
+    $app->post("/brand/{id}/add_store", function($id) use($app) {
+        $brand = Brand::find($id);
+        $brand->addStore($_POST['store_id']);
+        return $app->redirect($app['url_generator']->generate('brand', array('id' => $id)));
+    });
+
+
     return $app;
 ?>

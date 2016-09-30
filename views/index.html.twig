@@ -30,7 +30,7 @@
         <div class='col-sm-6'>
           <h2>Brands</h2>
           {% for brand in brands %}
-            <p>{{ brand.getBrandName }}</p>
+            <p><a href='/brand/{{ brand.getId }}'>{{ brand.getBrandName }}</a></p>
           {% endfor %}
           {% if brands %}
             <form action='/brands' method='post'>
