@@ -14,10 +14,12 @@
           {% for store in stores %}
             <p>{{ store.getStoreName }}</p>
           {% endfor %}
-          <form action='/stores' method='post'>
-            <input name="_method" type="hidden" value="delete">
-            <button type='submit'>Delete All</button>
-          </form>
+          {% if stores %}
+            <form action='/stores' method='post'>
+              <input name="_method" type="hidden" value="delete">
+              <button type='submit'>Delete All</button>
+            </form>
+          {% endif %}
           <form action='/add_store' method='post'>
             <h3>Add a Store</h3>
             <label for='store_name'>Name of Store:</label>
@@ -30,10 +32,12 @@
           {% for brand in brands %}
             <p>{{ brand.getBrandName }}</p>
           {% endfor %}
-          <form action='/brands' method='post'>
-            <input name="_method" type="hidden" value="delete">
-            <button type='submit'>Delete All</button>
-          </form>
+          {% if brands %}
+            <form action='/brands' method='post'>
+              <input name="_method" type="hidden" value="delete">
+              <button type='submit'>Delete All</button>
+            </form>
+          {% endif %}
           <form action='/add_brand' method='post'>
             <h3>Add a Brand</h3>
             <label for='brand_name'>Name of Brand:</label>
