@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Shoe Store</title>
   </head>
   <body>
     <div class='container'>
-      <h1>Shoe Store</h1>
-      <h1>{{ store.getStoreName }}</h1>
+      <h1>Shoes</h1>
+      <h2>Store - {{ store.getStoreName }}</h2>
       <div class='row'>
         <div class='col-sm-6'>
           <h3>Brands Carried</h3>
@@ -18,27 +19,28 @@
           <form action='/store/{{ store.getId }}/add_brand' method='post'>
             <h3>Add a Brand</h3>
             <select name='brand_id'>
-              {% for brand in all_brands %}
+              {% for brand in other_brands %}
                 <option value='{{ brand.getId }}'>{{ brand.getBrandName }}</option>
               {% endfor %}
             </select>
-            <button type='submit'>Add</button>
+            <button type='submit' class='btn btn-success'>Add</button>
           </form>
         </div>
         <div class='col-sm-6'>
+          <h3>Update Store Name</h3>
           <form action='/store/{{ store.getId }}' method='post'>
             <input name="_method" type="hidden" value="patch">
             <label for='store_name'>New Name:</label>
             <input id='store_name' name='store_name' type='text' value='{{ store.getStoreName }}'>
-            <button type='submit'>Update Name</button>
+            <button type='submit' class='btn btn-primary'>Update Name</button>
           </form>
           <form action='/store/{{ store.getId }}' method='post'>
             <input name="_method" type="hidden" value="delete">
-            <button type='submit'>Delete Store</button>
+            <button type='submit' class='btn btn-danger'>Delete Store</button>
           </form>
         </div>
       </div>
-
+      <a href='/'><button type='button' class='btn btn-primary'><img src="/images/home.svg"> Home</button></a>
     </div>
 
   </body>

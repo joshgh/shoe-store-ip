@@ -3,27 +3,27 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Shoe Brand</title>
   </head>
   <body>
     <div class='container'>
-      <h1>Shoe Brand</h1>
-      <h1>{{ brand.getBrandName }}</h1>
-          <h3>Stores Which Carry this Brand</h3>
-          {% for store in stores %}
-            <p><a href='/store/{{ store.getId }}'>{{ store.getStoreName }}</a></p>
-          {% endfor %}
-          <form action='/brand/{{ brand.getId }}/add_store' method='post'>
-            <h3>Add a Store</h3>
-            <select name='store_id'>
-              {% for store in all_stores %}
-                <option value='{{ store.getId }}'>{{ store.getStoreName }}</option>
-              {% endfor %}
-            </select>
-            <button type='submit'>Add</button>
-          </form>
-
+      <h1>Shoes</h1>
+      <h2>Brand - {{ brand.getBrandName }}</h2>
+        <h3>Stores Which Carry this Brand</h3>
+        {% for store in stores %}
+          <p><a href='/store/{{ store.getId }}'>{{ store.getStoreName }}</a></p>
+        {% endfor %}
+        <form action='/brand/{{ brand.getId }}/add_store' method='post'>
+          <h3>Add a Store</h3>
+          <select name='store_id'>
+            {% for store in other_stores %}
+              <option value='{{ store.getId }}'>{{ store.getStoreName }}</option>
+            {% endfor %}
+          </select>
+          <button type='submit' class='btn btn-success'>Add</button>
+        </form>
+        <a href='/'><button type='button' class='btn btn-primary'><img src="/images/home.svg"> Home</button></a>
     </div>
-
   </body>
 </html>

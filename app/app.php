@@ -45,8 +45,8 @@
     $app->get("/store/{id}", function($id) use($app) {
         $store = Store::find($id);
         $brands = $store->getBrands();
-        $all_brands = Brand::getAll();
-        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brands, 'all_brands' => $all_brands));
+        $other_brands = $store->getOtherBrands();
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brands, 'other_brands' => $other_brands));
     })
     ->bind('store');
 
@@ -71,8 +71,8 @@
     $app->get("/brand/{id}", function($id) use($app) {
         $brand = Brand::find($id);
         $stores = $brand->getStores();
-        $all_stores = Store::getAll();
-        return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores, 'all_stores' => $all_stores));
+        $other_stores = $brand->getOtherStores();
+        return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores, 'other_stores' => $other_stores));
     })
     ->bind('brand');
 

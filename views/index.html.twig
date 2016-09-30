@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Shoes</title>
   </head>
   <body>
@@ -17,14 +18,14 @@
           {% if stores %}
             <form action='/stores' method='post'>
               <input name="_method" type="hidden" value="delete">
-              <button type='submit'>Delete All</button>
+              <button class='btn btn-danger' type='submit'>Delete All</button>
             </form>
           {% endif %}
           <form action='/add_store' method='post'>
             <h3>Add a Store</h3>
             <label for='store_name'>Name of Store:</label>
-            <input type='text' name='store_name' id='store_name'>
-            <button type='submit'>Add Store</button>
+            <input type='text' name='store_name' id='store_name' required>
+            <button class='btn btn-success' type='submit'>Add Store</button>
           </form>
         </div>
         <div class='col-sm-6'>
@@ -35,14 +36,14 @@
           {% if brands %}
             <form action='/brands' method='post'>
               <input name="_method" type="hidden" value="delete">
-              <button type='submit'>Delete All</button>
+              <button class='btn btn-danger' type='submit'>Delete All</button>
             </form>
           {% endif %}
           <form action='/add_brand' method='post'>
             <h3>Add a Brand</h3>
             <label for='brand_name'>Name of Brand:</label>
-            <input type='text' name='brand_name' id='brand_name'>
-            <button type='submit'>Add Brand</button>
+            <input type='text' name='brand_name' id='brand_name' required>
+            <button class='btn btn-success' type='submit'>Add Brand</button>
           </form>
         </div>
       </div>
