@@ -39,4 +39,14 @@
             $this->assertEquals([], $result);
         }
 
+        function testUpdate()
+        {
+            $test_store = new Store("Payless");
+            $test_store->save();
+            $test_store->update("Paymore");
+            $result = Store::getAll()[0];
+
+            $this->assertEquals("Paymore", $result->getName());
+        }
+
     }
