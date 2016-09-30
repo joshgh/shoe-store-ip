@@ -19,6 +19,11 @@
         {
             return $this->store_name;
         }
+
+        function save()
+        {
+            
+        }
     }
 
 ?>

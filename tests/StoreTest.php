@@ -18,4 +18,12 @@
             $this->assertEquals("Payless", $result);
         }
 
+        function testSave()
+        {
+            $test_store = new Store("Payless");
+            $test_store->save();
+            $result = Store::getAll();
+            $this->assertEquals($test_store, $result[0]);
+        }
+
     }
