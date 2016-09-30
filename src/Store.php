@@ -22,7 +22,21 @@
 
         function save()
         {
-            
+            $GLOBALS['DB']->exec("INSERT INTO stores (store_name) VALUES ('{$this->store_name}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        function getAll()
+        {
+            $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores");
+            $store_array = array();
+            foreach ($returned_stores as $store){
+                $id = $store['id'];
+                $store_name = $store['store_name'];
+                $new_store = new Store($store_name, $id);
+                array_push($store_array, $new_store);
+            }
+            return $store_array;
         }
     }
 
