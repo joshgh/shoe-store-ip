@@ -26,4 +26,13 @@
             $this->assertEquals($test_store, $result[0]);
         }
 
+        function testDelete()
+        {
+            $test_store = new Store("Payless");
+            $test_store->save();
+            $test_store->delete();
+            $result = Store::getAll();
+            $this->assertEquals([], $result);
+        }
+
     }
