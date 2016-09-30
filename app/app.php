@@ -25,5 +25,11 @@
         return $app->redirect('/');
     });
 
+    $app->post("/add_brand", function() use ($app) {
+        $new_brand = new Brand($_POST['brand_name']);
+        $new_brand->save();
+        return $app->redirect('/');
+    });
+
     return $app;
 ?>
