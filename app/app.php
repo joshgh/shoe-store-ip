@@ -56,5 +56,17 @@
         return $app->redirect($app['url_generator']->generate('store', array('id' => $id)));
     });
 
+    $app->patch("/store/{id}", function($id) use($app) {
+        $store = Store::find($id);
+        $store->update($_POST['store_name']);
+        return $app->redirect($app['url_generator']->generate('store', array('id' => $id)));
+    });
+
+    $app->delete("/store/{id}", function($id) use($app) {
+        $store = Store::find($id);
+        $store->delete();
+        return $app->redirect('/');
+    });
+
     return $app;
 ?>
