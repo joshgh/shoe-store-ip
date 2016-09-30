@@ -36,5 +36,10 @@
         return $app->redirect('/');
     });
 
+    $app->delete("/stores", function() use ($app) {
+        Store::deleteAll();
+        return $app->redirect('/');
+    });
+
     return $app;
 ?>

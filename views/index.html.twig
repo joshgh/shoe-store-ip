@@ -14,6 +14,10 @@
           {% for store in stores %}
             <p>{{ store.getStoreName }}</p>
           {% endfor %}
+          <form action='/stores' method='post'>
+            <input name="_method" type="hidden" value="delete">
+            <button type='submit'>Delete All</button>
+          </form>
           <form action='/add_store' method='post'>
             <h3>Add a Store</h3>
             <label for='store_name'>Name of Store:</label>
