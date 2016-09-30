@@ -6,7 +6,24 @@
     <title>Shoes</title>
   </head>
   <body>
-    <h1>Shoes</h1>
+    <div class='container'>
+      <h1>Shoes</h1>
+      <div class='row'>
+        <div class='col-sm-6'>
+          <h2>Stores</h2>
+          {% for store in stores %}
+            <p>{{ store.getStoreName }}</p>
+          {% endfor %}
+        </div>
+        <div class='col-sm-6'>
+          <h2>Brands</h2>
+          {% for brand in brands %}
+            <p>{{ brand.getBrandName }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
 
   </body>
 </html>
