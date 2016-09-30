@@ -44,6 +44,19 @@
             return $store_array;
         }
 
+        function getOtherStores()
+        {
+            $own_stores = $this->getStores();
+            $all_stores = Store::getAll();
+            $other_stores = array();
+            foreach($all_stores as $store){
+                if(!in_array($store, $own_stores)){
+                    array_push($other_stores, $store);
+                }
+            }
+            return $other_stores;
+        }
+
         static function getAll()
         {
             $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands");
