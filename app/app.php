@@ -31,5 +31,10 @@
         return $app->redirect('/');
     });
 
+    $app->delete("/brands", function() use ($app) {
+        Brand::deleteAll();
+        return $app->redirect('/');
+    });
+
     return $app;
 ?>

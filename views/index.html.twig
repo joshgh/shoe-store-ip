@@ -26,6 +26,10 @@
           {% for brand in brands %}
             <p>{{ brand.getBrandName }}</p>
           {% endfor %}
+          <form action='/brands' method='post'>
+            <input name="_method" type="hidden" value="delete">
+            <button type='submit'>Delete All</button>
+          </form>
           <form action='/add_brand' method='post'>
             <h3>Add a Brand</h3>
             <label for='brand_name'>Name of Brand:</label>
