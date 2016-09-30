@@ -56,4 +56,15 @@
             $this->assertEquals($test_store, $result);
         }
 
+        function testAddBrand()
+        {
+            $test_store = new Store("Payless");
+            $test_store->save();
+            $test_brand = new Brand("Nike");
+            $test_brand->save();
+            $test_store->addBrand($test_brand->getId());
+            $result = $test_store->getBrands();
+            $this->assertEquals([$test_brand], $result);
+        }
+
     }
